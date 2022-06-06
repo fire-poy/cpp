@@ -6,7 +6,7 @@
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 15:28:36 by mpons             #+#    #+#             */
-/*   Updated: 2022/06/06 14:41:53 by mpons            ###   ########.fr       */
+/*   Updated: 2022/06/06 15:10:30 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,11 @@ void	PhoneBook::print_list(void)
 	std::cout << "Index     " << '|';
 	std::cout << "First Name" << '|';
 	std::cout << "Last Name " << '|';
-	std::cout << "Nickname  " << '|';
-	
-		//itoa
-		// tmp.size()
+	std::cout << "Nickname  " << std::endl;
 	while (++i < this->_q_contact_setted)
 	{
-		std::cout << "Contact [" << i << "\"" << std::endl;	
-		std::cout << this->contact[i].getFirstName() << std::endl;
+		std::cout << "Contact [" << i << "]" << std::endl;	
+		// this->contact[i].getFirstName();
 		std::cout << this->contact[i].getFirstName() << std::endl;
 		std::cout << this->contact[i].getLastName() << std::endl;
 		std::cout << this->contact[i].getNickName() << std::endl;
@@ -123,8 +120,7 @@ void	PhoneBook::print_list(void)
 
 void	PhoneBook::print_contact(int i)
 {
-	//itoa
-	std::cout << "Contact [" << i << "\"" << std::endl;	
+	std::cout << "Contact [" << i << "]" << std::endl;	
 	std::cout << this->contact[i].getFirstName() << std::endl;
 	std::cout << this->contact[i].getLastName() << std::endl;
 	std::cout << this->contact[i].getNickName() << std::endl;
