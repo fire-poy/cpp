@@ -6,7 +6,7 @@
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 15:30:07 by mpons             #+#    #+#             */
-/*   Updated: 2022/06/13 14:53:49 by mpons            ###   ########.fr       */
+/*   Updated: 2022/06/15 13:36:11 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ public:
 
 private:
 	Contact contact[8];
-	// INITIALIZE CONTACT
-	// int	PhoneBook::get_empty_contact(void);
 	std::string get_info(char const *s);
 	void		_printInFormat(std::string str) const;
 	int _oldest_Contact;

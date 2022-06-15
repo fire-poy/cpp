@@ -6,23 +6,20 @@
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:06:08 by mpons             #+#    #+#             */
-/*   Updated: 2022/06/06 13:20:41 by mpons            ###   ########.fr       */
+/*   Updated: 2022/06/15 13:16:37 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// std::cout << "Input a word: ";
-// 	std::cin >> buff;
 #include "Contact.hpp"
 	
 Contact::Contact(void)
 {
-	std::cout << "contact created" << std::endl;
-	this->i = 4;
+	return ;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "destructor called" << std::endl;
+	return ;
 }
 
 int	Contact::setFirstName(std::string s)
@@ -80,22 +77,3 @@ std::string	Contact::getDarkestSecret(void) const
 {
 	return (this->_DarkestSecret);
 }
-
-	// std::cout << "last name" << std::endl;
-	// std::getline(std::cin, cmd);
-	// std::cout << "nickname" << std::endl;
-	// std::getline(std::cin, cmd);
-	// std::cout << "phone number" << std::endl;
-	// std::getline(std::cin, cmd);
-	// std::cout << "darkest secret" << std::endl;
-
-	// std::string tmp;
-// ----------------
-	// std::cout << "first name" << std::endl;
-	// std::getline(std::cin, tmp);
-	// while (s->empty())
-	// {
-	// 	std::cout << "Contact can’t have empty fields." << std::endl;
-	// 	std::cout << "first name" << std::endl;
-	// 	std::getline(std::cin, s);
-	// }¡
