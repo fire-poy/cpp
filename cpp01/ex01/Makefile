@@ -6,11 +6,11 @@
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 10:53:36 by mpons             #+#    #+#              #
-#    Updated: 2022/08/11 14:48:06 by mpons            ###   ########.fr        #
+#    Updated: 2022/07/19 17:34:59 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME   = megaphone
+NAME   = Moar brainz!
 
 CC		= g++-11
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
@@ -19,11 +19,13 @@ OBJS	= ${SRC:.cpp=.o}
 
 RM		= rm -f
 
-SRC 	= ./megaphone.cpp
+SRC 	= ./main.cpp\
+		  ./Zombie.cpp\
+		  ./zombieHorde.cpp\
 
 all: $(NAME)
 
-.cpp.o:
+.c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
 
 $(NAME):	$(OBJS)

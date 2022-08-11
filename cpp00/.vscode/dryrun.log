@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/mpons/cpp/cpp00'
-make: Leaving directory `/Users/mpons/cpp/cpp00'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
