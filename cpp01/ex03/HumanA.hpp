@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 12:02:35 by mpons             #+#    #+#             */
-/*   Updated: 2022/08/15 16:58:03 by mpons            ###   ########.fr       */
+/*   Created: 2022/08/16 15:06:24 by mpons             #+#    #+#             */
+/*   Updated: 2022/08/18 15:26:32 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int main()
-{
-	Zombie stackZombie("pepe");
-	Zombie *heapZombie = newZombie("juan carlos");
+# include "Weapon.hpp"
 
-	randomChump("Roberto");
-	stackZombie.announce();
-	heapZombie->announce();
-	delete(heapZombie);
-}
+class HumanA{
+
+public:
+	HumanA(std::string name, Weapon w);
+	~HumanA(void);
+	void	attack(void) const;
+
+private:
+	std::string	const _name;
+	Weapon		_w;
+};
+	
+#endif
+
+

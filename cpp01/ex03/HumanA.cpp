@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 12:02:35 by mpons             #+#    #+#             */
-/*   Updated: 2022/08/15 16:58:03 by mpons            ###   ########.fr       */
+/*   Created: 2022/08/16 15:06:06 by mpons             #+#    #+#             */
+/*   Updated: 2022/08/18 15:31:44 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-int main()
+HumanA::HumanA(std::string name, Weapon w): _name(name) , _w(w) 
 {
-	Zombie stackZombie("pepe");
-	Zombie *heapZombie = newZombie("juan carlos");
-
-	randomChump("Roberto");
-	stackZombie.announce();
-	heapZombie->announce();
-	delete(heapZombie);
+	return ;
 }
+
+HumanA::~HumanA(void)
+{
+	return ;
+}
+
+void	HumanA::attack(void) const
+{
+	std::cout << this->_name << " attacks with their " << this->_w.getType() << std::endl;
+}
+
+

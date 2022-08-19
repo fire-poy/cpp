@@ -6,19 +6,21 @@
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:02:35 by mpons             #+#    #+#             */
-/*   Updated: 2022/07/19 17:31:53 by mpons            ###   ########.fr       */
+/*   Updated: 2022/08/16 11:40:18 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include "stdlib.h"
 
-int main()
+int main(void)
 {
-	Zombie stackZombie("pepe");
-	Zombie *heapZombie = new Zombie("juan carlos");
+	Zombie *firstZombie = NULL;
+	std::string buf;
 
-	randomChump("Roberto");
-	stackZombie.announce();
-	heapZombie->announce();
-	delete(heapZombie);
+	std::cout << "Put number of zombies: ";
+	std::getline(std::cin, buf);
+	firstZombie = zombieHorde(atoi(buf.c_str()), "jean pierre zombie");
+	delete [] firstZombie;
+	return (0);
 }

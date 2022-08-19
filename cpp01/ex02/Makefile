@@ -6,11 +6,11 @@
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 10:53:36 by mpons             #+#    #+#              #
-#    Updated: 2022/08/16 11:48:20 by mpons            ###   ########.fr        #
+#    Updated: 2022/08/16 13:44:41 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME   = Moar_Brainz!
+NAME   = HI_THIS_IS_BRAIN
 
 CC		= g++-11
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
@@ -19,9 +19,7 @@ OBJS	= ${SRC:.cpp=.o}
 
 RM		= rm -f
 
-SRC 	= ./main.cpp\
-		  ./Zombie.cpp\
-		  ./zombieHorde.cpp\
+SRC 	= ./main.cpp
 
 all: $(NAME)
 

@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpons <mpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 12:02:35 by mpons             #+#    #+#             */
-/*   Updated: 2022/08/15 16:58:03 by mpons            ###   ########.fr       */
+/*   Created: 2022/08/16 14:27:52 by mpons             #+#    #+#             */
+/*   Updated: 2022/08/18 10:34:01 by mpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int main()
+Weapon::Weapon(std::string type) : _type(type), _typeRef(this->_type)
 {
-	Zombie stackZombie("pepe");
-	Zombie *heapZombie = newZombie("juan carlos");
+    return;
+}
 
-	randomChump("Roberto");
-	stackZombie.announce();
-	heapZombie->announce();
-	delete(heapZombie);
+std::string	&Weapon::getType(void) const
+{
+	return (this->_typeRef);
+}
+
+void	Weapon::setType(std::string type)
+{
+	this->_type = type;
+}
+
+Weapon::~Weapon(void)
+{
+	return ;
 }
