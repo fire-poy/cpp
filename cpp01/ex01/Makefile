@@ -6,14 +6,14 @@
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 10:53:36 by mpons             #+#    #+#              #
-#    Updated: 2022/08/16 11:48:20 by mpons            ###   ########.fr        #
+#    Updated: 2022/08/20 17:29:55 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME   = Moar_Brainz!
 
 CC		= g++-11
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 OBJS	= ${SRC:.cpp=.o}
 

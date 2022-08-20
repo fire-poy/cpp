@@ -6,14 +6,13 @@
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/19 08:52:15 by mpons             #+#    #+#              #
-#    Updated: 2022/08/20 13:57:32 by mpons            ###   ########.fr        #
+#    Updated: 2022/08/20 17:25:04 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Sed_is_for_losers
 
-# CC		= g++-11
-CC		= c++
+CC		= g++-11
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic 
 
 OBJS	= ${SRC:.cpp=.o}
@@ -21,7 +20,6 @@ OBJS	= ${SRC:.cpp=.o}
 RM		= rm -f
 
 SRC 		= ./main.cpp\
-			  ./FileSt.cpp\
 
 all: $(NAME)
 
