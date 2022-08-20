@@ -5,15 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/19 08:52:15 by mpons             #+#    #+#              #
-#    Updated: 2022/08/20 13:57:32 by mpons            ###   ########.fr        #
+#    Created: 2022/08/19 13:52:08 by mpons             #+#    #+#              #
+#    Updated: 2022/08/19 15:01:39 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Sed_is_for_losers
+NAME		= Harl_2.0
 
-# CC		= g++-11
-CC		= c++
+CC		= g++-11
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic 
 
 OBJS	= ${SRC:.cpp=.o}
@@ -21,7 +20,7 @@ OBJS	= ${SRC:.cpp=.o}
 RM		= rm -f
 
 SRC 		= ./main.cpp\
-			  ./FileSt.cpp\
+			  ./Harl.cpp\
 
 all: $(NAME)
 
@@ -40,3 +39,5 @@ fclean:		clean
 re:			fclean all
 
 .PHONY : all clean fclean re bonus
+
+

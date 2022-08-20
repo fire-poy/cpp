@@ -5,25 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mpons <mpons@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/19 08:52:15 by mpons             #+#    #+#              #
-#    Updated: 2022/08/20 13:57:32 by mpons            ###   ########.fr        #
+#    Created: 2022/08/19 13:52:08 by mpons             #+#    #+#              #
+#    Updated: 2022/08/19 15:03:30 by mpons            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Sed_is_for_losers
+NAME		= Harl_filter
 
-# CC		= g++-11
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic 
+CC			= g++-11
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -pedantic 
 
-OBJS	= ${SRC:.cpp=.o}
+OBJS		= ${SRC:.cpp=.o}
 
-RM		= rm -f
+RM			= rm -f
 
 SRC 		= ./main.cpp\
-			  ./FileSt.cpp\
+			  ./Harl.cpp\
 
-all: $(NAME)
+all:		$(NAME)
 
 .cpp.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
@@ -39,4 +38,6 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY:		all clean fclean re bonus
+
+
