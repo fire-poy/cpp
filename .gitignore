@@ -1,6 +1,5 @@
 .DS_Store
 /.vscode
-/ClassGen
 /z_cpp
 /exec/reference.c
 
