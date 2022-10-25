@@ -1,10 +1,10 @@
-NAME=fixed-point_number_class
+NAME=Now_we’re_talking
 SRC=./main.cpp\
 	./Fixed.cpp\
 	./FixedConstructor.cpp\
-	./FixedOperator.cpp
+	./FixedOperator.cpp\
 
-CC=g++-11
+CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}

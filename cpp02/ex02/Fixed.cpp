@@ -49,3 +49,23 @@ int		Fixed::pow(int nb, int power) const
 	}
 	return (ret);
 }
+
+Fixed	Fixed::min(Fixed &f1, Fixed &f2)
+{
+	return (f1 < f2) ? f1 : f2;
+}
+
+Fixed	Fixed::max(Fixed &f1, Fixed &f2)
+{
+	return (f1 > f2) ? f1 : f2;
+}
+
+Fixed	Fixed::min(Fixed const &f1, Fixed const &f2)
+{
+	return (f1 < f2) ? f1 : f2;
+}
+
+Fixed	Fixed::max(Fixed const &f1, Fixed const &f2)
+{
+	return (f1 > f2) ? f1 : f2;
+}

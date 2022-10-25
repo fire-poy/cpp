@@ -2,18 +2,17 @@
 # define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
-
-//allowd roundf (from <cmath>)
 class Fixed
 {
 public:
 
 	Fixed(void);
 	Fixed(int const n);
-	Fixed(float const n);
+	Fixed(float const f);
 	Fixed(Fixed const & src);
-	Fixed & operator=(Fixed const & src);
+	Fixed & operator=(Fixed const & rhs);
 	~Fixed(void);
 
 	float	toFloat(void) const;
@@ -22,10 +21,16 @@ public:
 	void	setRawBits (int const raw);
 	int		getRawBits(void) const;
 
+	void	setVerbose(bool value);
+	bool	getVerbose(void) const;
+	
+	int		pow(int nb, int power) const;
+
 private:
 
 	int					_rawBits;
-	const static int	_fractionalBits; //doit etre toujour 8
+	const static int	_fractionalBits;
+	static bool			_verbose;
 
 };
 
