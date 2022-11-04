@@ -3,7 +3,6 @@
 FragTrap::FragTrap(void)
 {
 	std::cout << "FragTrap Default Constructor called" << std::endl;
-	this->_name = "Unknow";
 	this->_hitPoints = 100;
 	this->_maxHp = 100;
 	this->_energyPoints = 100;

@@ -6,22 +6,22 @@
 int	main(void)
 {
 	DiamondTrap f;
-	DiamondTrap z("zoum");
 
 	f.highFivesGuys();
 	f.attack("alfred");
 	f.takeDamage(5);
 	f.beRepaired(5);
 	f.whoAmI();
-	f.takeDamage(100);
+	f.takeDamage(110);
 	f.attack("somebody");	
 
 	std::cout << "-----zoum-----------" << std::endl;
 
+	DiamondTrap z("zoum");
 	z.highFivesGuys();
 	z.attack("alfred");
 	z.takeDamage(5);
-	z.beRepaired(5);
+	z.beRepaired(50);
 	// std::cout << "----------------" << std::endl;
 	// for (int i = 0; i < 100; i++)
 	// {
