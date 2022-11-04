@@ -3,9 +3,10 @@
 DiamondTrap::DiamondTrap(void) 
 {
 	std::cout << "DiamondTrap Default Constructor called" << std::endl;
-	ClapTrap::_name += "_clap_name";//hay dos nombres
-	this->_name = "DiamondT";
+	ClapTrap::_name += "_clap_name";
+	this->_name = "Unknow Diamond Trap";
 	this->_hitPoints = FragTrap::_hitPoints;
+	this->_maxHp = FragTrap::_maxHp;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
 }
@@ -13,10 +14,8 @@ DiamondTrap::DiamondTrap(void)
 DiamondTrap::DiamondTrap(std::string const & name) : ClapTrap(name + "_clap_name"), _name(name)
 {
 	std::cout << "DiamondTrap String Constructor called" << std::endl;
-	// ClapTrap::_name += "_clap_name";//sin este ClapTrap no funca
-
-	// this->_name = name;
 	this->_hitPoints = FragTrap::_hitPoints;
+	this->_maxHp = FragTrap::_maxHp;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
 }

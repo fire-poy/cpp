@@ -23,6 +23,7 @@ class ClapTrap
 
 		std::string	_name;
 		int			_hitPoints;
+		int			_maxHp;
 		int			_energyPoints;
 		int			_attackDamage;
 };

@@ -1,13 +1,13 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() : 
-_name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+_name("ClapTrap"), _hitPoints(10), _maxHp(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const & name) : 
-_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+_name(name), _hitPoints(10), _maxHp(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap String Constructor called" << std::endl;
 }
@@ -33,6 +33,7 @@ ClapTrap &		ClapTrap::operator=(ClapTrap const & rhs)
 {
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
+	this->_maxHp = rhs._maxHp;
 	this->_energyPoints = rhs._energyPoints;
 	this->_attackDamage = rhs._attackDamage;
 	std::cout << "ClapTrap Assignment operator called" << std::endl;
@@ -70,6 +71,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints > 0)
 	{
+		if ((int)amount > this->_hitPoints)
+			amount = this->_hitPoints;
 		std::cout << "ClapTrap " << this->_name << " has taken " << amount << " points of damage!" << std::endl;
 		this->_hitPoints -= amount;
 	}
@@ -84,9 +87,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		if (this->_energyPoints > 0)
 		{
-			std::cout << "ClapTrap " << this->_name << " it's being repaired gaining ";
-			std::cout << amount << " Hit Points" << std::endl;
 			this->_energyPoints--;
+			if (this->_hitPoints + (int)amount > this->_maxHp)
+				amount = this->_maxHp - this->_hitPoints; 
+			this->_hitPoints += amount;
+			std::cout << "ClapTrap " << this->_name << " it's being repaired " << " gaining ";
+			std::cout << amount << " Hit Points" << std::endl;
 		}
 		else 
 			std::cout << "ClapTrap " << this->_name << " dosen't have enough energy" << std::endl;

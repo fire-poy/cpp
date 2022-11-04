@@ -12,12 +12,25 @@ int	main(void)
 	f.attack("alfred");
 	f.takeDamage(5);
 	f.beRepaired(5);
-	z.takeDamage(100);
-	// for (int i = 0; i < 100; i++)
-	// {
-	// 	f.attack("somebody");	
-	// }
+	f.whoAmI();
 	f.takeDamage(100);
 	f.attack("somebody");	
+
+	std::cout << "-----zoum-----------" << std::endl;
+
+	z.highFivesGuys();
+	z.attack("alfred");
+	z.takeDamage(5);
+	z.beRepaired(5);
+	// std::cout << "----------------" << std::endl;
+	// for (int i = 0; i < 100; i++)
+	// {
+	// 	z.attack("somebody");	
+	// }
+	// std::cout << "----------------" << std::endl;
+	z.whoAmI();
+	z.takeDamage(100);
+	z.attack("somebody");	
+
 	return 0;
 }

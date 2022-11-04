@@ -43,6 +43,7 @@ int	main(void)
 	j.attack("Jhonny");
 	j.takeDamage(60);
 	j.beRepaired(4);
+	j.beRepaired(200);
 	j.guardGate();
 	std::cout << std::endl;
 	j = st;

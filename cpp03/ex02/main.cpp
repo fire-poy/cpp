@@ -71,12 +71,12 @@ int	main(void)
 	f.highFivesGuys();
 	f.attack("alfred");
 	f.takeDamage(5);
-	f.beRepaired(5);
-	z.takeDamage(100);
-	for (int i = 0; i < 100; i++)
-	{
-		f.attack("somebody");	
-	}
+	f.beRepaired(10);
+	z.takeDamage(110);
+	// for (int i = 0; i < 100; i++)
+	// {
+	// 	f.attack("somebody");	
+	// }
 	f.takeDamage(100);
 	f.attack("somebody");	
 	return 0;
