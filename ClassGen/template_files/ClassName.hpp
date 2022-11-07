@@ -7,11 +7,11 @@ class ClassName
 {
 	public:
 	
-		ClassName(void);
+		ClassName();
 		// ClassName(int const n);
 		// ClassName(std::string const & name);
 		ClassName(ClassName const & src);
-		~ClassName(void);
+		~ClassName();
 		ClassName & operator=(ClassName const & rhs);
 
 		void	bar(char const c) const;
@@ -20,8 +20,8 @@ class ClassName
 		void	bar(ClassName const & i) const;
 		
 		void		setName(std::string const & name);
-		std::string	getName(void) const ;
-		int			getFoo(void) const;
+		std::string	getName() const ;
+		int			getFoo() const;
 
 	private:
 
