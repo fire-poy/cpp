@@ -1,12 +1,10 @@
-NAME=JeNeVeuxPasBrûlerLeMonde
+NAME=En_rang,_les_larves_!
 SRC=./main.cpp\
-	./Animal.cpp\
-	./Cat.cpp\
-	./Dog.cpp\
-	./Brain.cpp\
+	./Bureaucrat.cpp\
+	./Form.cpp\
 
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-g3 -fsanitize=address 
+CFLAGS=-Wall -Wextra -std=c++98 -pedantic #-Werror -fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f
@@ -28,4 +26,3 @@ fclean:clean
 re:	fclean all
 
 .PHONY : all clean fclean re
-

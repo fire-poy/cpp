@@ -1,18 +1,18 @@
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 # include <iostream>
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Cat : public Animal
+class Dog : public AAnimal
 {
 	public:
 	
-		Cat();
-		Cat(Cat const & src);
-		Cat & operator=(Cat const & rhs);
-		~Cat();
+		Dog();
+		Dog(Dog const & src);
+		Dog & operator=(Dog const & rhs);
+		~Dog();
 
 		void		makeSound() const;
 		void		setIdea(std::string const & idea, int i);

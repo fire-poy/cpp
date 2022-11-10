@@ -23,12 +23,6 @@ Animal &		Animal::operator=(Animal const & rhs)
 	return *this;
 }
 
-std::ostream	& operator<<(std::ostream & o, Animal const & rhs)
-{
-	o << rhs.getType();
-	return o;
-}
-
 // Getters/Setters
 void	Animal::setType(std::string const & type)
 {

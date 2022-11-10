@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -13,9 +14,12 @@ class Dog : public Animal
 		Dog & operator=(Dog const & rhs);
 		~Dog();
 
-		void	makeSound() const;
-};
+		void		makeSound() const;
+		void		setIdea(std::string const & idea, int i);
+		std::string	getIdea(int i) const ;
 
-std::ostream	& operator<<(std::ostream & o, Dog const & inst);
+	private:
+		Brain	*_brain;
+};
 
 #endif

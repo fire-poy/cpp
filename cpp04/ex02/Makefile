@@ -1,6 +1,6 @@
-NAME=JeNeVeuxPasBrûlerLeMonde
+NAME=ClasseAbstraite
 SRC=./main.cpp\
-	./Animal.cpp\
+	./AAnimal.cpp\
 	./Cat.cpp\
 	./Dog.cpp\
 	./Brain.cpp\

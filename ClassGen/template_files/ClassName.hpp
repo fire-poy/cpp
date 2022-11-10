@@ -9,10 +9,10 @@ class ClassName
 	
 		ClassName();
 		// ClassName(int const n);
-		// ClassName(std::string const & name);
+		// ClassName(std::string const & name = "no_name");
 		ClassName(ClassName const & src);
-		~ClassName();
 		ClassName & operator=(ClassName const & rhs);
+		~ClassName();
 
 		void	bar(char const c) const;
 		void	bar(int const n) const;

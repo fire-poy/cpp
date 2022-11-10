@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
@@ -9,10 +9,10 @@ int main()
 	std::cout << "\033[0;0m" << std::endl;
 
 	{
-		Animal	a;
-		std::cout << "a is from type '" << a.getType() << "'" << std::endl;
-		a.makeSound();
-		std::cout << std::endl;
+		// AAnimal	a;
+		// std::cout << "a is from type '" << a.getType() << "'" << std::endl;
+		// a.makeSound();
+		// std::cout << std::endl;
 	
 		Cat		c;
 		Cat		c2;
@@ -37,11 +37,11 @@ int main()
 	std::cout << "\033[0;0m" << std::endl;
 
 	{
-		Animal	*a = new Animal();
-		std::cout << "a is from type '" << a->getType() << "'" << std::endl;
-		a->makeSound();
-		delete a;
-		std::cout << std::endl;
+		// AAnimal	*a = new AAnimal();
+		// std::cout << "a is from type '" << a->getType() << "'" << std::endl;
+		// a->makeSound();
+		// delete a;
+		// std::cout << std::endl;
 
 		Cat		*c = new Cat();
 		std::cout << "c is from type '" << c->getType() << "'" << std::endl;
@@ -61,37 +61,37 @@ int main()
 	std::cout << "\033[0;0m" << std::endl;
 
 	{
-		Animal	*a = new Animal();
-		std::cout << "a is from type '" << a->getType() << "'" << std::endl;
-		a->makeSound();
-		std::cout << std::endl;
+		// AAnimal	*a = new AAnimal();
+		// std::cout << "a is from type '" << a->getType() << "'" << std::endl;
+		// a->makeSound();
+		// delete a;
+		// std::cout << std::endl;
 
-		Animal	*c = new Cat();
+		AAnimal	*c = new Cat();
 		std::cout << "c is from type '" << c->getType() << "'" << std::endl;
 		c->makeSound();
 		std::cout << std::endl;
 
-		Animal	*d = new Dog();
+		AAnimal	*d = new Dog();
 		std::cout << "d is from type '" << d->getType() << "'" << std::endl;
 		d->makeSound();
 		std::cout << std::endl;
 
 		delete d;
 		delete c;
-		delete a;
 	}
 	std::cout << std::endl << "\033[0;31m" << "other test";
 	std::cout << std::endl << "\033[0;0m" << std::endl;
 
 	Cat c1;
-	Animal &a1 = c1;
+	AAnimal &a1 = c1;
 	std::cout << "a1 is from type '" << a1.getType() << "'" << std::endl;
 
 	std::cout << std::endl << "\033[0;31m" << "Brain";
 	std::cout << std::endl << "\033[0;0m" << std::endl;
 	{
 		const int tabSize = 4;
-		Animal *a[tabSize];
+		AAnimal *a[tabSize];
 
 		for (int i = 0; i < tabSize; i++)
 		{

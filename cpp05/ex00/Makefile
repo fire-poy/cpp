@@ -1,12 +1,9 @@
-NAME=JeNeVeuxPasBrûlerLeMonde
+NAME=Maman,_quand_je_serai_grand,_je_serai_bureaucrate_!
 SRC=./main.cpp\
-	./Animal.cpp\
-	./Cat.cpp\
-	./Dog.cpp\
-	./Brain.cpp\
+	./Bureaucrat.cpp\
 
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-g3 -fsanitize=address 
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f
@@ -28,4 +25,3 @@ fclean:clean
 re:	fclean all
 
 .PHONY : all clean fclean re
-

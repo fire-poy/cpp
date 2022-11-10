@@ -2,30 +2,31 @@
 
 ClassName::ClassName()
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "ClassName Default Constructor called" << std::endl;
 }
 
 
-ClassName::ClassName(ClassName const & src) : _name(src.getName())
+ClassName::ClassName(ClassName const & src)
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "ClassName Copy Constructor called" << std::endl;
+	*this = src;
 }
 
 ClassName::ClassName(std::string const & name) : _name(name)
 {
-	std::cout << "String Constructor called" << std::endl;
+	std::cout << "ClassName String Constructor called" << std::endl;
 }
 
 ClassName::~ClassName()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClassName Destructor called" << std::endl;
 }
 
 // operators
 ClassName &		ClassName::operator=(ClassName const & rhs)
 {
 	this->_name = rhs.getName();
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "ClassName Assignment operator called" << std::endl;
 	return *this;
 }
 

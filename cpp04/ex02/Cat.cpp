@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
-// type herite de Animal en protected
+// type herite de AAnimal en protected
 Cat::Cat() : _brain(new Brain())
 {
 	this->type = "Cat";
 	std::cout << "Cat Default Constructor called" << std::endl;
 }
 
-Cat::Cat(Cat const & src) : Animal(src)
+Cat::Cat(Cat const & src) : AAnimal(src)
 {
 	this->_brain = new Brain(*src._brain);//sans * on a addrese de brain
 	std::cout << "Cat Copy Constructor called" << std::endl;
@@ -16,7 +16,7 @@ Cat::Cat(Cat const & src) : Animal(src)
 Cat &		Cat::operator=(Cat const & rhs)
 {
 	std::cout << "Cat Assignment operator called" << std::endl;
-	Animal::operator=(rhs);
+	AAnimal::operator=(rhs);
 	if (this->_brain)
 		delete (this->_brain);
 	this->_brain = new Brain(*rhs._brain);//sans * on a addrese de brain

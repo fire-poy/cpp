@@ -6,7 +6,7 @@ Dog::Dog() : _brain(new Brain())
 	this->type = "Dog";
 }
 
-Dog::Dog(Dog const & src) : Animal(src)
+Dog::Dog(Dog const & src) : AAnimal(src)
 {
 	this->_brain = new Brain(*src._brain);//sans * on a addrese de brain
 	std::cout << "Dog Copy Constructor called" << std::endl;
@@ -15,7 +15,7 @@ Dog::Dog(Dog const & src) : Animal(src)
 Dog &		Dog::operator=(Dog const & rhs)
 {
 	std::cout << "Dog Assignment operator called" << std::endl;
-	Animal::operator=(rhs);
+	AAnimal::operator=(rhs);
 	if (this->_brain)
 		delete this->_brain;
 	this->_brain = new Brain(*rhs._brain);
