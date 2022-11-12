@@ -1,6 +1,4 @@
-#include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <fstream>
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const & target) :
 AForm("PresidentialPardonForm", PresidentialPardonForm::_gradeToSign, PresidentialPardonForm::_gradeToExe), _target(target)

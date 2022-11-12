@@ -96,5 +96,8 @@ int main()
 	king.executeForm(p1);
 
 	upgradeForExe(king, p1);
+
+	std::cout << "\n\033[0;95m" << "Destruction" << "\n\033[0;0m\n";
+
 	return 0;
 }

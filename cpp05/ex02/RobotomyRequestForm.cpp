@@ -1,6 +1,5 @@
-#include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
-#include <fstream>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const & target) :
 AForm("RobotomyRequestForm", RobotomyRequestForm::_gradeToSign, RobotomyRequestForm::_gradeToExe), _target(target)
@@ -29,10 +28,8 @@ RobotomyRequestForm &		RobotomyRequestForm::operator=(RobotomyRequestForm const 
 
 void	RobotomyRequestForm::executionWork() const
 {
-	static int i = 0;
 	std::cout << "Shium Shiiiiiiiiiiiiiiiium" << std::endl;
-	i++;
-	if (i / 2)
+	if (std::rand() % 2)
 		std::cout << this->_target << " has been robotomisized" << std::endl;
 	else
 		std::cout << this->_target << " robotomisation has failed" << std::endl;
