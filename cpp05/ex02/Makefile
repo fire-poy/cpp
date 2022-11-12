@@ -22,6 +22,7 @@ $(NAME):$(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	rm -f $(wildcard *_shrubbery)
 
 fclean:clean  
 	$(RM) $(NAME) 

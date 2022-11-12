@@ -29,10 +29,10 @@ int main()
 	ShrubberyCreationForm f;
 	std::cout << f << std::endl;
 
-	ShrubberyCreationForm mAct("Marriage act");
+	ShrubberyCreationForm mAct("Marriage_act");
 	std::cout << mAct<< std::endl;
 
-	ShrubberyCreationForm divorceAct("Divorce act");
+	ShrubberyCreationForm divorceAct("Divorce_act");
 	std::cout << mAct<< std::endl;
 	divorceAct = mAct;
 	std::cout << divorceAct << std::endl;
