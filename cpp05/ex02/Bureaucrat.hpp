@@ -2,7 +2,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class Bureaucrat
 {
@@ -18,7 +18,8 @@ class Bureaucrat
 		void		checkGrade() const;
 		void		gradeUp();
 		void		gradeDown();
-		void		signForm(Form &f) const;
+		void		signForm(AForm &f) const;
+		void		executeForm(AForm const & form) const;
 
 	private:
 

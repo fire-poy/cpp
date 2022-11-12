@@ -1,10 +1,11 @@
-NAME=En_rang,_les_larves_!
+NAME=Ah_mais_non,_il_vous_faut_la_28B,_pas_la_28C...
 SRC=./main.cpp\
 	./Bureaucrat.cpp\
-	./Form.cpp\
+	./AForm.cpp\
+	./ShrubberyCreationForm.cpp\
 
 CC=g++
-CFLAGS=-Wall -Wextra -std=c++98 -pedantic #-Werror -fsanitize=address -g3
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic # -fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f

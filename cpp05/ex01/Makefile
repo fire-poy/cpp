@@ -4,7 +4,7 @@ SRC=./main.cpp\
 	./Form.cpp\
 
 CC=g++
-CFLAGS=-Wall -Wextra -std=c++98 -pedantic #-Werror -fsanitize=address -g3
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f

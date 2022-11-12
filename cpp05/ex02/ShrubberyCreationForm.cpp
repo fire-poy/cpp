@@ -1,79 +1,62 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
-Form::Form(std::string const & name, int const gradeToSign, int const gradeToExe):
-_name(name) , _gradeToSign(gradeToSign), _gradeToExe(gradeToExe), _signed(false)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) :
+AForm("ShrubberyCreationForm", ShrubberyCreationForm::_gradeToSign, ShrubberyCreationForm::_gradeToExe), _target(target)
 {
-	std::cout << "Form Default Constructor called" << std::endl;
-	checkGrades();
+	std::cout << "ShrubberyCreationForm Default Constructor called" << std::endl;
 }
 
-Form::Form(Form const & src) : _name(src.getName()) , _gradeToSign(src.getGradeToSign()),
-_gradeToExe(src.getGradeToExe()), _signed(src.isSigned())
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src) : AForm(src), _target(src._target)
 {
-	std::cout << "Form Copy Constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm Copy Constructor called" << std::endl;
 }
 
-Form::~Form()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "Form Destructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm Destructor called" << std::endl;
 }
 
 // operators
-Form &		Form::operator=(Form const & rhs)
+ShrubberyCreationForm &		ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
-	this->_signed = rhs.isSigned();
-	std::cout << "Form Assignment operator called" << std::endl;
+	AForm::operator=(rhs);
+	this->_target = rhs._target;//getTarget();
+	std::cout << "ShrubberyCreationForm Assignment operator called" << std::endl;
 	return *this;
 }
 
-std::ostream	& operator<<(std::ostream & o, Form const & rhs)
+void	ShrubberyCreationForm::executionWork() const
 {
-	o << rhs.getName() << " form" << std::endl;
-	o << "Grade to be signed: " << rhs.getGradeToSign() << std::endl;
-	o << "Grade to be executed: " << rhs.getGradeToExe() << std::endl;
-	return o;
-}
+	std::ofstream	ShFile;
+	std::string		fileName = this->_target + "_shrubbery";
 
-std::string	Form::getName() const
-{
-	return this->_name;
-}
-
-int	Form::getGradeToSign() const
-{
-	return this->_gradeToSign;
-}
-
-int	Form::getGradeToExe() const
-{
-	return this->_gradeToExe;
-}
-
-void	Form::checkGrades() const
-{
-	if (this->_gradeToSign > 150)
-		throw GradeTooLowException();
-	if (this->_gradeToSign < 1)
-		throw GradeTooHighException();
-	if (this->_gradeToExe > 150)
-		throw GradeTooLowException();
-	if (this->_gradeToExe < 1)
-		throw GradeTooHighException();
-}
-
-bool	Form::isSigned() const
-{
-	return this->_signed;
-}
-
-void	Form::beSigned(const Bureaucrat &b)
-{
-	if (b.getGrade() <= this->_gradeToSign)
-	{
-		this->_signed = true;
-		std::cout << b << " signed form " << this->_name << std::endl;
-	}
-	else 
-		throw GradeTooLowException();
+	ShFile.open(fileName.c_str());
+    if (ShFile.fail() == true)
+    {
+        std::cout << "error: creating file " << fileName << std::endl;
+        return ;
+    }
+	ShFile << "              .o00o" << std::endl;
+    ShFile << "             o000000oo" << std::endl;
+    ShFile << "            00000000000o" << std::endl;
+    ShFile << "           00000000000000" << std::endl;
+    ShFile << "        oooooo  00000000  o88o" << std::endl; 
+    ShFile << "     ooOOOOOOOoo  ```''  888888" << std::endl; 
+    ShFile << "   OOOOOOOOOOOO'.qQQQQq. `8888'" << std::endl;
+    ShFile << "  oOOOOOOOOOO'.QQQQQQQQQQ/.88' " << std::endl;
+    ShFile << "  OOOOOOOOOO'.QQQQQQQQQQ/ /q"<< std::endl;
+    ShFile << "   OOOOOOOOO QQQQQQQQQQ/ /QQ"<< std::endl;
+    ShFile << "     OOOOOOOOO `QQQQQQ/ /QQ'" << std::endl;
+    ShFile << "       OO:F_P:O `QQQ/  /Q'" << std::endl;
+    ShFile << "          ||. ( |  // |" << std::endl;
+    ShFile << "          d( (((|_////" << std::endl;
+    ShFile << "          qP| (( _' `|Ob" << std::endl;
+    ShFile << "             (  / (  (Op" << std::endl;
+    ShFile << "             |  | O| |" << std::endl;
+    ShFile << "     _       /(. (_/ /( " << std::endl;
+    ShFile << "      `---__/|_((   //|  __" << std::endl;
+    ShFile << "            `-'  `-'`-'-'" << std::endl;
+  	ShFile.close();
 }
