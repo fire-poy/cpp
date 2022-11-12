@@ -1,5 +1,26 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
+void	upgradeForExe(Bureaucrat b, AForm &f)
+{
+	while (1)
+	{
+		try
+		{
+			b.executeForm(f);
+			if (b.getGrade() > 5)
+				b.gradeUp();
+			else 
+				break;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
+}
 
 int main()
 {
@@ -51,9 +72,29 @@ int main()
 
 	std::cout << std::endl;
 
-	std::cout << "\n\033[0;31m" << "Other tests" << "\n\033[0;0m\n";
-	std::cout << mAct.getName() << std::endl;
-	std::cout << mAct.isSigned() << std::endl;
+	std::cout << "\n\033[0;96m" << "Robotomisation" << "\n\033[0;0m\n";
+	RobotomyRequestForm ch("chicken");
+	RobotomyRequestForm a;
 
+	std::cout << std::endl;
+
+	king.signForm(a);
+	king.signForm(ch);
+	king.executeForm(a);
+	king.executeForm(ch);
+
+	std::cout << "\n\033[0;91m" << "Presidential Pardon" << "\n\033[0;0m\n";
+
+	PresidentialPardonForm p;
+	PresidentialPardonForm p1("Miss Gruyere");
+
+	std::cout << std::endl;
+
+	king.signForm(p);
+	king.signForm(p1);
+	king.executeForm(p);
+	king.executeForm(p1);
+
+	upgradeForExe(king, p1);
 	return 0;
 }

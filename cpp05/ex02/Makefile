@@ -3,6 +3,8 @@ SRC=./main.cpp\
 	./Bureaucrat.cpp\
 	./AForm.cpp\
 	./ShrubberyCreationForm.cpp\
+	./RobotomyRequestForm.cpp\
+	./PresidentialPardonForm.cpp\
 
 CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic # -fsanitize=address -g3
@@ -22,7 +24,8 @@ clean:
 	$(RM) $(OBJS)
 
 fclean:clean  
-	$(RM) $(NAME)
+	$(RM) $(NAME) 
+	rm -f $(wildcard *_shrubbery)
 
 re:	fclean all
 
