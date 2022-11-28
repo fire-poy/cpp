@@ -12,8 +12,12 @@ StringConversor::StringConversor(StringConversor const & src)
 
 StringConversor::StringConversor(std::string const & input) : _input(input)
 {
-	StringConversor::specialCase(std::string input) //literal
-	StringConversor::convertString() //literal
+	StringConversor::specialCase(std::string input);
+	StringConversor::convertString(input);
+	StringConversor::detectConvertType(std::string const input);
+	
+
+
 
 }
 
@@ -45,7 +49,7 @@ std::string	StringConversor::getInput() const
 	return this->_input;
 }
 
-bool	StringConversor::specialCase(std::string const input) //literal
+bool	StringConversor::specialCase(std::string const input)
 {
 	std::string floatLimits[] = {"+inff", "-inff", "nanf"};
 	std::string doubleLimits[] = {"+inf", "-inf", "nan"};
@@ -78,7 +82,7 @@ bool	StringConversor::specialCase(std::string const input) //literal
 }
 
 // 1. Détecter le type du littéral passé en paramètre, 
-void	StringConversor::detectConvertType(std::string const input) //literal
+void	StringConversor::detectConvertType(std::string const input)
 {
 	std::istringstream s(input);
 	
@@ -94,38 +98,37 @@ void	StringConversor::detectConvertType(std::string const input) //literal
 		return true;
 	}
 	// int	i = input.begin();
-	int	j = 0;
-	for (i = input.begin(); i != input.end(); i++)
-	{
-		if (!std::isdigit(input.at(i)))
-		{
-			if (input.at(i) == '+' || input.at(i) == '-') 
-				i++;
-			else
-			{
-				_source = UNKNOWN;
-				return false;
-			}
-		}
-	if (std::isdigit(input.at(i)))
-	{
-		i++;
-		j++;
-		if (input.at(i) && input.at(i) == '.' && std::isdigit(input.at(i + 1)))
-		{
-			if (++point > 1)
-				return (0);
-			i++;
-		}
-	}
-
+	// int	j = 0;
+	// for (i = input.begin(); i != input.end(); i++)
+	// {
+	// 	if (!std::isdigit(input.at(i)))
+	// 	{
+	// 		if (input.at(i) == '+' || input.at(i) == '-') 
+	// 			i++;
+	// 		else
+	// 		{
+	// 			_source = UNKNOWN;
+	// 			return false;
+	// 		}
+	// 	}
+	// 	if (std::isdigit(input.at(i)))
+	// 	{
+	// 		i++;
+	// 		j++;
+	// 		if (input.at(i) && input.at(i) == '.' && std::isdigit(input.at(i + 1)))
+	// 		{
+	// 			if (++point > 1)
+	// 				return (0);
+	// 			i++;
+	// 		}
+	// 	}
 	if (specialCase(input))
 		return;
 
 }
 
 2. Le convertir de sa représentation sous forme de chaîne de caractères vers son véritable type
-void	StringConversor::convertString() //literal
+void	StringConversor::convertString()
 {
 
 }

@@ -3,7 +3,7 @@ SRC=./main.cpp\
 	./StringConversor.cpp\
 	
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors#-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f
