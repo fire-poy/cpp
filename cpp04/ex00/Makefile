@@ -6,7 +6,7 @@ SRC=./main.cpp\
 	./WrongAnimal.cpp\
 	./WrongCat.cpp\
 
-CC=g++
+CC=g++-11
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}

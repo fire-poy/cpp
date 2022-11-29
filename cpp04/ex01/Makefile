@@ -5,7 +5,7 @@ SRC=./main.cpp\
 	./Dog.cpp\
 	./Brain.cpp\
 
-CC=g++
+CC=g++-11
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-g3 -fsanitize=address 
 
 OBJS=${SRC:.cpp=.o}

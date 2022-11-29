@@ -2,7 +2,7 @@ NAME=Maman,_quand_je_serai_grand,_je_serai_bureaucrate_!
 SRC=./main.cpp\
 	./Bureaucrat.cpp\
 
-CC=g++
+CC=g++-11
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
