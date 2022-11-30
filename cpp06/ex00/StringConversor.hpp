@@ -6,15 +6,19 @@
 # include <limits>
 # include <istream>
 
+class StringConversor
+{
+	public:
+
 		StringConversor();
 		StringConversor(std::string const & input);
 		StringConversor(StringConversor const & src);
 		StringConversor & operator=(StringConversor const & rhs);
 		~StringConversor();
 
-		void		setName(std::string const & name);
-		std::string	getName() const ;
-
+		void		setInput(std::string const & input);
+		std::string	getInput() const ;
+		void		printAll();
 
 	private:
 
@@ -27,8 +31,11 @@
 			DOUBLE
 		};
 		
-		void	detectType();
 		bool	specialCase(std::string const input);
+		bool	detectType(std::string const input);
+		void	convertString();
+		void	cast();
+
 		int			_type;
 		char		_c;
 		int			_i;

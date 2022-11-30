@@ -12,11 +12,11 @@ StringConversor::StringConversor(StringConversor const & src)
 
 StringConversor::StringConversor(std::string const & input) : _input(input)
 {
-	StringConversor::specialCase(std::string input);
-	StringConversor::convertString(input);
-	StringConversor::detectConvertType(std::string const input);
-	
-
+	if (detectType(input))
+	{
+		convertString();
+		cast();
+	}
 }
 
 StringConversor::~StringConversor()
@@ -32,7 +32,7 @@ StringConversor &		StringConversor::operator=(StringConversor const & rhs)
 
 std::ostream	& operator<<(std::ostream & o, StringConversor const & rhs)
 {
-	// o << rhs.getInput();
+	o << rhs.getInput();
 	return o;
 }
 
@@ -80,16 +80,16 @@ bool	StringConversor::specialCase(std::string const input)
 }
 
 // 1. Détecter le type du littéral passé en paramètre, 
-void	StringConversor::detectConvertType(std::string const input)
+bool	StringConversor::detectType(std::string const input)
 {
-	std::istringstream s(input);
+	// std::istringstream s(input);
 	
 	if (input.empty())
 	{
 		_type = UNKNOWN;
 		return false;
 	}
-	if (input.length() == 1 && !std::isdigit(input.at(0))
+	if (input.length() == 1 && !std::isdigit(input.at(0)))
 	{
 		_type = CHAR;
 		_c = input.at(0);
@@ -97,20 +97,20 @@ void	StringConversor::detectConvertType(std::string const input)
 	}
 	if (specialCase(input))
 		return true;
-	if (!std::isdigit(input.at(i)))
+	int	i = 0;
+	if (!std::isdigit(input.at(0)))
 	{
 		if (input.at(0) == '+' || input.at(0) == '-') 
 			i++;
 		else
 		{
-			_source = UNKNOWN;
+			_type = UNKNOWN;
 			return false;
 		}
 	}
-	int	i = 0;
 	int	digit = 0;
 	int	point = 0;
-	while (std::isdigit(input.at(i))
+	while (std::isdigit(input.at(i)))
 	{
 		digit++;
 		i++;
@@ -118,25 +118,26 @@ void	StringConversor::detectConvertType(std::string const input)
 		{
 			if (++point > 1)
 			{
-				_source = UNKNOWN;
+				_type = UNKNOWN;
 				return false;
 			}
 			i++;
 		}
 	}
-	if (input.at(i) == input.end() && input.at(i) == 'f' && digit > 0 && point == 1)
+	if (i == input.end() && input.at(i) == 'f' && digit > 0 && point == 1)
+	// if (input.at(i) == input.end() && input.at(i) == 'f' && digit > 0 && point == 1)
 	{
-		_source = FLOAT;
+		_type = FLOAT;
 		return true;
 	}
 	if (input.at(i) == std::string::npos && digit > 0 && point == 1)
 	{
-		_source = DOUBLE;
+		_type = DOUBLE;
 		return true;
 	}
 	if (input.at(i) == std::string::npos && digit > 0 && point == 0)
 	{
-		_source = INT;
+		_type = INT;
 		return true;
 	}
 	return (0);
@@ -144,13 +145,15 @@ void	StringConversor::detectConvertType(std::string const input)
 	// for (i = input.begin(); i != input.end(); i++)
 }
 
-}
-
-2. Le convertir de sa représentation sous forme de chaîne de caractères vers son véritable type
+// 2. Le convertir de sa représentation sous forme de chaîne de caractères vers son véritable type
 void	StringConversor::convertString()
 {
-
+	std::cout << _type << '\n';
 }
 
-3. ensuite le convertir explicitement vers les trois autres types de données.
-void	StringConversor::castToOtherTypes()
+// 3. ensuite le convertir explicitement vers les trois autres types de données.
+void	StringConversor::cast()
+{}
+
+void	StringConversor::printAll()
+{}
