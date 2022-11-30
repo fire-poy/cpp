@@ -1,6 +1,5 @@
-NAME=Conversion_scalaire 
+NAME=a_test
 SRC=./main.cpp\
-	./StringConversor.cpp\
 	
 CC=g++-11
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors -g3#-fsanitize=address -g3

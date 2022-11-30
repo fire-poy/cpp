@@ -4,7 +4,8 @@
 # include <iostream>
 # include <cmath>
 # include <limits>
-# include <istream>
+# include <sstream>
+# include <climits>
 
 class StringConversor
 {
@@ -33,8 +34,13 @@ class StringConversor
 		
 		bool	specialCase(std::string const input);
 		bool	detectType(std::string const input);
-		void	convertString();
-		void	cast();
+		// void	convertString(std::string const input);
+		// void	cast();
+		void	printUnknown();
+		void	printChar();
+		void	printInt();
+		void	printFloat();
+		void	printDouble();
 
 		int			_type;
 		char		_c;
