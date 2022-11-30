@@ -24,7 +24,8 @@ void	upgradeForExe(Bureaucrat b, AForm &f)
 
 int main()
 {
-	std::cout << "\n\033[0;31m" << "form creation" << "\n\033[0;0m\n";
+	std::srand (time(NULL));
+	std::cout << "\033[0;31m" << "form creation" << "\n\033[0;0m\n";
 	
 	ShrubberyCreationForm f;
 	std::cout << f << std::endl;

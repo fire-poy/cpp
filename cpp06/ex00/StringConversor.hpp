@@ -6,10 +6,6 @@
 # include <limits>
 # include <istream>
 
-class StringConversor
-{
-	public:
-	
 		StringConversor();
 		StringConversor(std::string const & input);
 		StringConversor(StringConversor const & src);
