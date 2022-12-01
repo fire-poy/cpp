@@ -1,18 +1,13 @@
 #include "StringConversor.hpp"
 
-StringConversor::StringConversor()
+StringConversor::StringConversor(std::string const & input) : _input(input)
 {
+	detectType(input);
 }
-
 
 StringConversor::StringConversor(StringConversor const & src)
 {
 	*this = src;
-}
-
-StringConversor::StringConversor(std::string const & input) : _input(input)
-{
-	detectType(input);
 }
 
 StringConversor::~StringConversor()
@@ -23,6 +18,10 @@ StringConversor::~StringConversor()
 StringConversor &		StringConversor::operator=(StringConversor const & rhs)
 {
 	this->_input = rhs.getInput();
+	this->_c = rhs._c;
+	this->_i = rhs._i;
+	this->_f = rhs._f;
+	this->_d = rhs._d;
 	return *this;
 }
 
@@ -35,6 +34,7 @@ std::ostream	& operator<<(std::ostream & o, StringConversor const & rhs)
 void	StringConversor::setInput(std::string const & input)
 {
 	this->_input = input;
+	detectType(input);
 }
 
 std::string	StringConversor::getInput() const
@@ -42,7 +42,7 @@ std::string	StringConversor::getInput() const
 	return this->_input;
 }
 
-bool	StringConversor::specialCase(std::string const input)
+bool	StringConversor::isSpecialCase(std::string const input)
 {
 	std::string floatLimits[] = {"+inff", "-inff", "nanf"};
 	std::string doubleLimits[] = {"+inf", "-inf", "nan"};
@@ -56,7 +56,7 @@ bool	StringConversor::specialCase(std::string const input)
 			_type = FLOAT;
 			_f = static_cast<float>(limitValues[i]);
 			_d = limitValues[i];
-			return (true);
+			return true;
 		}
 	}
 	for (int i = 0; i < 3; i++)
@@ -66,42 +66,26 @@ bool	StringConversor::specialCase(std::string const input)
 			_type = DOUBLE;
 			_f = static_cast<float>(limitValues[i]);
 			_d = limitValues[i];
-			return (true);
+			return true;
 		}
 	}
-	return (false);
+	return false;
 }
 
-void	StringConversor::detectType(std::string const input)
+bool	StringConversor::isNumberType(std::string const input)
 {
 	std::string::const_iterator it = input.begin();
 	std::istringstream is(input);
+	int	digit = 0;
+	int	point = 0;
 
-	if (input.empty())
-	{
-		_type = UNKNOWN;
-		return false;
-	}
-	if (input.length() == 1 && !std::isdigit(*it))
-	{
-		_type = CHAR;
-		_c = *it;
-		return true;
-	}
-	if (specialCase(input))
-		return true;
 	if (!std::isdigit(input.at(0)))
 	{
 		if (input.at(0) == '+' || input.at(0) == '-') 
 			it++;
 		else
-		{
-			_type = UNKNOWN;
 			return false;
-		}
 	}
-	int	digit = 0;
-	int	point = 0;
 	while (it != input.end() && std::isdigit(*it))
 	{
 		digit++;
@@ -111,10 +95,7 @@ void	StringConversor::detectType(std::string const input)
 			if (std::isdigit(*(it + 1)))
 			{
 				if (++point > 1)
-				{
-					_type = UNKNOWN;
 					return false;
-				}
 			}
 			it++;
 		}
@@ -140,8 +121,24 @@ void	StringConversor::detectType(std::string const input)
 			return true;
 		}
 	}
-	_type = UNKNOWN;
 	return false;
+}
+
+void	StringConversor::detectType(std::string const input)
+{
+	if (input.empty())
+		_type = UNKNOWN;
+	else if (input.length() == 1 && !std::isdigit(input.at(0)))
+	{
+		_type = CHAR;
+		_c = input.at(0);
+	}
+	else if (isSpecialCase(input))
+		return;
+	else if (isNumberType(input))
+		return;
+	else
+		_type = UNKNOWN;
 }
 
 void	StringConversor::printFromUnknown()
@@ -152,9 +149,12 @@ void	StringConversor::printFromUnknown()
 void	StringConversor::printFromChar()
 {
 	std::cout << "char: '" << _c << "'" << std::endl;
+	
 	std::cout << "int: " << static_cast<int>(_c) << std::endl;
+
 	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(_c) << "f" << std::endl;
+	
 	std::cout << "double: " << static_cast<double>(_c) << std::endl;
 }
 
@@ -166,7 +166,9 @@ void	StringConversor::printFromInt()
 		std::cout << "char: Non displayable" << std::endl;
 	else		
 		std::cout << "char: '" << static_cast<char>(_i) << "'" << std::endl;
+
 	std::cout << "int: " << _i << std::endl;
+
 	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(_i) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(_i) << std::endl;
@@ -186,6 +188,7 @@ void	StringConversor::printFromFloat()
 		std::cout << "int: " << static_cast<int>(_f) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
+
 	if (ceil(_f) == _f)
 		std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << (_f) << "f" << std::endl;
@@ -206,11 +209,11 @@ void	StringConversor::printFromDouble()
 		std::cout << "int: " << static_cast<int>(_d) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
+
 	if (ceil(_d) == _d)
 			std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(_d) << "f" << std::endl;
 	std::cout << "double: " << _d << std::endl;
-
 }
 
 void	StringConversor::printAll()

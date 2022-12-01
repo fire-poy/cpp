@@ -12,8 +12,7 @@ class StringConversor
 {
 	public:
 
-		StringConversor();
-		StringConversor(std::string const & input);
+		StringConversor(std::string const & input = "no input");
 		StringConversor(StringConversor const & src);
 		StringConversor & operator=(StringConversor const & rhs);
 		~StringConversor();
@@ -40,7 +39,8 @@ class StringConversor
 		float		_f;
 		double		_d;
 
-		bool	specialCase(std::string const input);
+		bool	isSpecialCase(std::string const input);
+		bool	isNumberType(std::string const input);
 		void	detectType(std::string const input);
 		void	printFromUnknown();
 		void	printFromChar();
