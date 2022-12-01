@@ -12,10 +12,7 @@ StringConversor::StringConversor(StringConversor const & src)
 
 StringConversor::StringConversor(std::string const & input) : _input(input)
 {
-	if (detectType(input))
-	{
-		// convertString();
-	}
+	detectType(input);
 }
 
 StringConversor::~StringConversor()
@@ -35,7 +32,6 @@ std::ostream	& operator<<(std::ostream & o, StringConversor const & rhs)
 	return o;
 }
 
-// Getters/Setters
 void	StringConversor::setInput(std::string const & input)
 {
 	this->_input = input;
@@ -76,8 +72,7 @@ bool	StringConversor::specialCase(std::string const input)
 	return (false);
 }
 
-// 1. Détecter le type du littéral passé en paramètre, 
-bool	StringConversor::detectType(std::string const input)
+void	StringConversor::detectType(std::string const input)
 {
 	std::string::const_iterator it = input.begin();
 	std::istringstream is(input);
@@ -127,7 +122,7 @@ bool	StringConversor::detectType(std::string const input)
 	if (it == input.end() - 1 && *it == 'f' && digit > 0 && point == 1)
 	{
 		_type = FLOAT;
-		is >> _f;//il faut enlever dernier char F
+		is >> _f;
 		return true;
 	}
 	if (it == input.end() && digit > 0)
@@ -145,85 +140,77 @@ bool	StringConversor::detectType(std::string const input)
 			return true;
 		}
 	}
-	return (0);
+	_type = UNKNOWN;
+	return false;
 }
 
-// // 2. Le convertir de sa représentation sous forme de chaîne de caractères vers son véritable type
-// void	StringConversor::convertString(std::string const input)
-// {
-
-// 	switch (_type)
-// 	{
-// 		case CHAR:
-
-
-// 		case INT:
-// 		case FLOAT:
-// 		case DOUBLE:
-// 	}
-	
-// }
-
-// 3. ensuite le convertir explicitement vers les trois autres types de données.
-// void	StringConversor::cast()
-// {}
-
-//48
-void	StringConversor::printUnknown()
+void	StringConversor::printFromUnknown()
 {
-	std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: Non displayable" << std::endl;
-	std::cout << "float: Non displayable" << std::endl;
-	std::cout << "double: Non displayable" << std::endl;
+	std::cerr << "Error: string is not a Char, Int, Float, or Double" << std::endl;
 }
 
-void	StringConversor::printChar()
+void	StringConversor::printFromChar()
 {
-	std::cout << "char: " << _c << std::endl;
+	std::cout << "char: '" << _c << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(_c) << std::endl;
-	std::cout << "float: " << static_cast<float>(_c) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(_c) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(_c) << std::endl;
 }
-//convertPrintInt
-void	StringConversor::printInt()
+
+void	StringConversor::printFromInt()
 {
-	if (_i >= CHAR_MIN && _i <= CHAR_MAX)
-		std::cout << "char: " << static_cast<char>(_i)  << std::endl;
-	else
+	if (_i < CHAR_MIN || _i > CHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else if (_i < 32 || _i > 126)
 		std::cout << "char: Non displayable" << std::endl;
+	else		
+		std::cout << "char: '" << static_cast<char>(_i) << "'" << std::endl;
 	std::cout << "int: " << _i << std::endl;
-	std::cout << "float: " << static_cast<float>(_i) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(_i) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(_i) << std::endl;
 }
 
-void	StringConversor::printFloat()
+void	StringConversor::printFromFloat()
 {
-	if (_f == ceilf(_f) && _f >= CHAR_MIN && _f <= CHAR_MAX)
-		std::cout << "char: " << static_cast<char>(_f)  << std::endl;
-	else
+	if (_f != ceilf(_f) || _f < CHAR_MIN || _f > CHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else if (_f < 32 || _f > 126)
 		std::cout << "char: Non displayable" << std::endl;
+	else		
+		std::cout << "char: '" << static_cast<char>(_f) << "'" << std::endl;
+
 	if (_f != std::numeric_limits<double>::infinity() && _f != -std::numeric_limits<double>::infinity() 
-	&& _f == std::numeric_limits<double>::quiet_NaN() && _f >= INT_MIN && _f <= INT_MAX)
+	&& _f != std::numeric_limits<double>::quiet_NaN() && _f >= INT_MIN && _f <= INT_MAX)
 		std::cout << "int: " << static_cast<int>(_f) << std::endl;
 	else
-		std::cout << "int: Non displayable" << std::endl;
-	std::cout << "float: " << (_f) << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	if (ceil(_f) == _f)
+		std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << (_f) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(_f) << std::endl;
 }
 
-void	StringConversor::printDouble()
+void	StringConversor::printFromDouble()
 {
-	if (_d == ceilf(_d) && _d >= CHAR_MIN && _d <= CHAR_MAX)
-		std::cout << "char: " << static_cast<char>(_d)  << std::endl;
-	else
+	if (_d != ceilf(_d) || _d < CHAR_MIN || _d > CHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else if (_d < 32 || _d > 126)
 		std::cout << "char: Non displayable" << std::endl;
+	else		
+		std::cout << "char: '" << static_cast<char>(_d) << "'" << std::endl;
+	
 	if (_d != std::numeric_limits<double>::infinity() && _d != -std::numeric_limits<double>::infinity() 
-	&& _d == std::numeric_limits<double>::quiet_NaN() && _d >= INT_MIN && _d <= INT_MAX)
+	&& _d != std::numeric_limits<double>::quiet_NaN() && _d >= INT_MIN && _d <= INT_MAX)
 		std::cout << "int: " << static_cast<int>(_d) << std::endl;
 	else
-		std::cout << "int: Non displayable" << std::endl;
-	std::cout << "float: " << static_cast<float>(_d) << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	if (ceil(_d) == _d)
+			std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(_d) << "f" << std::endl;
 	std::cout << "double: " << _d << std::endl;
+
 }
 
 void	StringConversor::printAll()
@@ -231,14 +218,21 @@ void	StringConversor::printAll()
 	switch (_type)
 	{
 		case UNKNOWN:
-			printUnknown();
+			printFromUnknown();
+			break;
 		case CHAR:
-			printChar();
+			printFromChar();
+			break;
 		case INT:
-			printInt();
+			printFromInt();
+			break;
 		case FLOAT:
-			printFloat();
+			printFromFloat();
+			break;
 		case DOUBLE:
-			printDouble();
+			printFromDouble();
+			break;
+		default:
+			break;
 	}
 }

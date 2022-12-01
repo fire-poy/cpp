@@ -6,6 +6,7 @@
 # include <limits>
 # include <sstream>
 # include <climits>
+# include <iomanip>
 
 class StringConversor
 {
@@ -23,7 +24,7 @@ class StringConversor
 
 	private:
 
-		enum //_type
+		enum
 		{
 			UNKNOWN,
 			CHAR,
@@ -32,23 +33,20 @@ class StringConversor
 			DOUBLE
 		};
 		
-		bool	specialCase(std::string const input);
-		bool	detectType(std::string const input);
-		// void	convertString(std::string const input);
-		// void	cast();
-		void	printUnknown();
-		void	printChar();
-		void	printInt();
-		void	printFloat();
-		void	printDouble();
-
+		std::string	_input;
 		int			_type;
 		char		_c;
 		int			_i;
 		float		_f;
 		double		_d;
-		
-		std::string	_input;
+
+		bool	specialCase(std::string const input);
+		void	detectType(std::string const input);
+		void	printFromUnknown();
+		void	printFromChar();
+		void	printFromInt();
+		void	printFromFloat();
+		void	printFromDouble();
 };
 
 std::ostream	& operator<<(std::ostream & o, StringConversor const & inst);

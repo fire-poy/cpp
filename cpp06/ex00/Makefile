@@ -2,7 +2,7 @@ NAME=Conversion_scalaire
 SRC=./main.cpp\
 	./StringConversor.cpp\
 	
-CC=g++-11
+CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors -g3#-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
