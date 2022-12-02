@@ -1,9 +1,9 @@
-NAME=Conversion_scalaire 
+NAME=Sérialisation 
 SRC=./main.cpp\
-	./StringConversor.cpp\
-	
+	./Serialize.cpp\
+
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors #-fsanitize=address -g3
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors#-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}
 RM=rm -f
@@ -25,4 +25,3 @@ fclean:clean
 re:	fclean all
 
 .PHONY : all clean fclean re
-
