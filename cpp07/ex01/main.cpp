@@ -3,7 +3,7 @@
 // Votre fonction template iter devra fonctionner avec n’importe quel type de tableau.
 // Le troisième paramètre peut être une fonction template instanciée.
 #include "Iter.hpp"
-	// std::cout << "\n\033[0;91m" << "Rouge" << "\n\033[0;0m\n";
+
 int main ()
 {
 	std::string s[] = {"Vacherin", "Gruyere", "Appenzeller"};
@@ -16,31 +16,16 @@ int main ()
 	int t[] = {0, 2, 4, 6 ,8};
 	std::cout << "\n\033[0;95m" << "Int" << "\n\033[0;0m\n";
 	iter(t, 5, fun);
+	iter(t, 5, divide);
 
-		// int	tab_int[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	std::cout << "\n\033[0;95m" << "Divided by 2" << "\n\033[0;0m\n";
+	iter(t, 5, fun);
 
-	// 	print_tab_int(tab_int, tab_size);
-	// 	iter(tab_int, tab_size, mult_by_10);
-	// 	print_tab_int(tab_int, tab_size);
-
-	// 	iter(tab_int, tab_size, fun);
-	// }
-
-	// std::cout << "-------- STRINGS ----------" << std::endl;
-	// {
-	// 	std::string tab_string[10] = {
-	// 		"This",
-	// 		"CPP",
-	// 		"Piscine",
-	// 		"Is",
-	// 		"Very",
-	// 		"Veryyyyyy",
-	// 		"Much",
-	// 		"Too",
-	// 		"Long",
-	// 		"!!!!!!!!!!!!!!!!"};
-
-	// 	iter(tab_string, tab_size, fun);
-	// }
-	// return 0;
+	float f[] = {0.5, 2.4, 4.3, 6.8 ,8.9};
+	std::cout << "\n\033[0;95m" << "Divided by 2" << "\n\033[0;0m\n";
+	iter(f, 5, divide);
+	iter(f, 5, fun);
+	std::cout << "\n\033[0;91m" << "Float" << "\n\033[0;0m\n";
+	iter(f, 5, fun);
+	return 0;
 }

@@ -4,9 +4,23 @@
 # include <iostream>
 
 template<typename T>
+void	divide(T &x)
+{
+	x /= 2;
+}
+
+template<typename T>
 void	fun(T &tab)
 {
-	std::cout << "Hello from Tab element: " << tab << std::endl;
+	std::cout << "Tab element: " << tab << std::endl;
+}
+
+template<>
+void	fun(float &tab)
+{
+	std::cout << "Tab floats element: " << tab << std::endl;
+	tab *= 10;
+	std::cout << "Multiplied by 10 = " << tab << std::endl << std::endl;
 }
 
 // Implémentez une fonction template iter prenant 3 paramètres et ne retournant rien.
@@ -19,15 +33,7 @@ void	iter(T *tab, size_t size, void (*fun)(T &))
 	if (size < 0)
 		return;
 	for (size_t i(0); i < size; i++)
-	{
 		fun(tab[i]);
-		// fun(&tab[i]);
-		// fun(tab);
-	}
 }
-void	iter(T tab[], int tab_size, void(*f)(T &))
-void	iter(T tab, size_t size, void (*my_function)(T tab))
-
-
 
 #endif
