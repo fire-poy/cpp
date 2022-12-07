@@ -2,7 +2,7 @@
 // Fournissez assez de code pour générer un exécutable de test.
 // Votre fonction template iter devra fonctionner avec n’importe quel type de tableau.
 // Le troisième paramètre peut être une fonction template instanciée.
-#include "Iter.hpp"
+#include "iter.hpp"
 
 int main ()
 {
