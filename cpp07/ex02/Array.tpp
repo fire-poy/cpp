@@ -3,20 +3,68 @@
 
 # include <iostream>
 
-template<typename T>
+template<typename T = int>
 class Array
 {
-	public:
-	
-		Array(unsigned int const n = 0);//crée un array de n éléments initialisés par défaut.
-		Array(Array const & src);
-		Array	& operator=(Array const & rhs);
-		T		& operator[](unsigned int n);
-		const T & operator[](unsigned int n) const;
-		~Array();
+	private:
 
-		T 		& getArray();
-		size_t	size();//return n d'element de l'array . ne modifie pas l'instance courrante
+		size_t		_size;
+		T			*_array;
+	
+	public:
+		
+//crée un array de n éléments initialisés par défaut.
+//  Vous DEVEZ utiliser l’opérateur new[] pour allouer de la mémoire. 
+// Toute allocation préventive (c’est-à-dire allouer de la mémoire en avance) est interdite. 
+// Votre programme ne doit pas pouvoir accéder à une zone non allouée.
+// cree array de n element initialises par default
+		Array<T>(unsigned int const n = 0) : _size(n)
+		{
+			this->_array = new T[n];
+			// this->_array = new T[n]();
+		}
+		
+		Array<T>(Array const & src) : _array(NULL)
+		{
+			*this = src;
+		}
+		
+		Array<T> &	operator=(Array const & rhs)
+		{
+			if (this->_array)
+				delete [] this->_array;
+			this->_size = rhs.size();
+			this->_array = new T[_size];
+			for (size_t i(0); i < _size; i++)
+				this->_array[i] = rhs[i];
+			return *this;
+		}
+		
+		T	&		operator[](unsigned int i)
+		{
+			if (i < 0 || i >= this->_size)
+				throw OutofScopeException();
+			return this->_array[i];
+		}
+
+		const T	&		operator[](unsigned int i) const
+		{
+			if (i < 0 || i >= this->_size)
+				throw OutofScopeException();
+			return this->_array[i];
+		}
+		
+		~Array<T>()
+		{
+			if (this->_array)
+				delete [] this->_array;
+		}
+
+		//return n d'element de l'array. ne modifie pas l'instance courrante
+		size_t	size() const
+		{
+			return this->_size;
+		}
 
 		class OutofScopeException : public std::exception
 		{
@@ -26,102 +74,13 @@ class Array
 					return "Tab accesor is out of scope";
 				}
 		};
-
-	private:
-
-		size_t		_size;
-		T			*_array;
 };
-
-template<typename T>
-std::ostream	& operator<<(std::ostream & o, Array<T> const & inst);
-
-
-//  Vous DEVEZ utiliser l’opérateur new[] pour allouer de la mémoire. 
-// Toute allocation préventive (c’est-à-dire allouer de la mémoire en avance) est interdite. 
-// Votre programme ne doit pas pouvoir accéder à une zone non allouée.
-// cree array de n element initialises par default
-template<typename T>
-Array<T>::Array(unsigned int const n) : _size(n)
-{
-	this->_array = new T[n];// = NULL;
-}
-
-template<typename T>
-Array<T>::Array(Array const & src)
-{
-	*this = src;
-}
-
-template<typename T>
-Array<T>::~Array()
-{
-	delete [] this->_array;
-}
-
-// operators
-template<typename T>
-Array<T> &		Array<T>::operator=(Array const & rhs)
-{
-	this->_size = rhs.size();
-	if (this->_array)
-		delete [] this->_array;
-	this->_array = new T[_size];
-	for (int i(0); i < _size; i++)
-		this->_array[i] = rhs.getArray[i];
-	return *this;
-}
-
-//  En cas d’index invalide lors d’une tentative d’accès d’un élément en 
-// utilisant l’opérateur[ ], une std::exception est jetée.
-template<typename T>
-T	&Array<T>::operator[](unsigned int i)
-{
-	try
-	{
-		if (i < 0 || i >= this->size)
-			throw OutofScopeException();
-		return this->_array[i];
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
-
-template<typename T>
-const T	&Array<T>::operator[](unsigned int i) const
-{
-	try
-	{
-		if (i < 0 || i >= this->size)
-			throw OutofScopeException();
-		return this->_array[i];
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
 
 template<typename T>
 std::ostream	& operator<<(std::ostream & o, Array<T> const & rhs)
 {
 	o << rhs.size();
 	return o;
-}
-
-//return n d'element de l'array . ne modifie pas l'instance courrante
-template<typename T>
-size_t	Array<T>::size()
-{
-	return this->_size;
-}
-
-template<typename T>
-T 		& Array<T>::getArray()
-{
-	return this->_array;
 }
 
 #endif
