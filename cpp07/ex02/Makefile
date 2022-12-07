@@ -1,6 +1,5 @@
 NAME=Array 
 SRC=./main.cpp\
-	./Array.cpp
 
 CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors#-fsanitize=address -g3

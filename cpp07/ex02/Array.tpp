@@ -1,5 +1,5 @@
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
+#ifndef ARRAY_TPP
+# define ARRAY_TPP
 
 # include <iostream>
 
@@ -16,9 +16,9 @@ class Array
 		~Array();
 
 		T 		& getArray();
-		void	size();//return n d'element de l'array . ne modifie pas l'instance courrante
+		size_t	size();//return n d'element de l'array . ne modifie pas l'instance courrante
 
-		class GradeOutofScopeException : public std::exception
+		class OutofScopeException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
@@ -42,26 +42,26 @@ std::ostream	& operator<<(std::ostream & o, Array<T> const & inst);
 // Votre programme ne doit pas pouvoir accéder à une zone non allouée.
 // cree array de n element initialises par default
 template<typename T>
-Array::Array(unsigned int const n) : _size(n)
+Array<T>::Array(unsigned int const n) : _size(n)
 {
-	this->_array = new T[n] = NULL;
+	this->_array = new T[n];// = NULL;
 }
 
 template<typename T>
-Array::Array(Array const & src)
+Array<T>::Array(Array const & src)
 {
 	*this = src;
 }
 
 template<typename T>
-Array::~Array()
+Array<T>::~Array()
 {
 	delete [] this->_array;
 }
 
 // operators
 template<typename T>
-Array &		Array::operator=(Array const & rhs)
+Array<T> &		Array<T>::operator=(Array const & rhs)
 {
 	this->_size = rhs.size();
 	if (this->_array)
@@ -75,12 +75,12 @@ Array &		Array::operator=(Array const & rhs)
 //  En cas d’index invalide lors d’une tentative d’accès d’un élément en 
 // utilisant l’opérateur[ ], une std::exception est jetée.
 template<typename T>
-T	&Array::operator[](unsigned int i)
+T	&Array<T>::operator[](unsigned int i)
 {
 	try
 	{
 		if (i < 0 || i >= this->size)
-			throw std::exception;
+			throw OutofScopeException();
 		return this->_array[i];
 	}
 	catch(const std::exception& e)
@@ -90,12 +90,12 @@ T	&Array::operator[](unsigned int i)
 }
 
 template<typename T>
-const T	&Array::operator[](unsigned int i) const
+const T	&Array<T>::operator[](unsigned int i) const
 {
 	try
 	{
 		if (i < 0 || i >= this->size)
-			throw std::exception;
+			throw OutofScopeException();
 		return this->_array[i];
 	}
 	catch(const std::exception& e)
@@ -105,7 +105,7 @@ const T	&Array::operator[](unsigned int i) const
 }
 
 template<typename T>
-std::ostream	& operator<<(std::ostream & o, Array const & rhs)
+std::ostream	& operator<<(std::ostream & o, Array<T> const & rhs)
 {
 	o << rhs.size();
 	return o;
@@ -113,13 +113,13 @@ std::ostream	& operator<<(std::ostream & o, Array const & rhs)
 
 //return n d'element de l'array . ne modifie pas l'instance courrante
 template<typename T>
-size_t	Array::size()
+size_t	Array<T>::size()
 {
 	return this->_size;
 }
 
 template<typename T>
-T 		& Array::getArray();
+T 		& Array<T>::getArray()
 {
 	return this->_array;
 }
