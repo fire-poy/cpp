@@ -32,9 +32,17 @@ int	main()
 	i = easyfind(l, n);		
 	if (i == l.end())
 	// if (easyfind(l, n) == l.end())
-		std::cout << "n: " << n << " not founded | ";// << *i << std::endl;
+		std::cout << "n: " << n << " not founded | " << *i << std::endl;
 	else 
-		std::cout << "n: " << n << " founded | ";// << *i << std::endl;
+		std::cout << "n: " << n << " founded | " << *i << std::endl;
+
+	n = 2;
+	i = easyfind(l, n);		
+	if (i == l.end())
+	// if (easyfind(l, n) == l.end())
+		std::cout << "n: " << n << " not founded | " << *i << std::endl;
+	else 
+		std::cout << "n: " << n << " founded | " << *i << std::endl;
 
 	std::cout << std::endl;
 	n = 8;
