@@ -18,7 +18,6 @@ public:
 private:
 
 	int		_n;
-
 };
 
 //surcharche de fontion pas membre parce que ostream c'est une classe code par un autre developpeur
