@@ -1,7 +1,7 @@
 NAME=Easy_find 
 SRC=./main.cpp\
 
-CC=g++
+CC=g++-12
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic -Wfatal-errors#-fsanitize=address -g3
 
 OBJS=${SRC:.cpp=.o}

@@ -11,7 +11,7 @@ void	displayInt(int i)
 
 int	main()
 {
-	std::list<int>	l;//(2, 5);//size, content
+	std::list<int>	l;
 	int				n = 7;
 
 	for (int i(0); i < 10; i += 2)
@@ -28,10 +28,8 @@ int	main()
 	std::cout << std::endl;
 	n = 10;
 	std::list<int>::iterator i;
-	i = l.begin(); //da igual
 	i = easyfind(l, n);		
 	if (i == l.end())
-	// if (easyfind(l, n) == l.end())
 		std::cout << "n: " << n << " not founded | " << *i << std::endl;
 	else 
 		std::cout << "n: " << n << " founded | " << *i << std::endl;
@@ -39,11 +37,9 @@ int	main()
 	n = 2;
 	i = easyfind(l, n);		
 	if (i == l.end())
-	// if (easyfind(l, n) == l.end())
 		std::cout << "n: " << n << " not founded | " << *i << std::endl;
 	else 
 		std::cout << "n: " << n << " founded | " << *i << std::endl;
-
 	std::cout << std::endl;
 	n = 8;
 
@@ -54,7 +50,6 @@ int	main()
 	v.push_back(9);
 	for_each(v.begin(), v.end(), displayInt);
 	
-
 	std::vector<int>::iterator j;
 	j = std::find(v.begin(), v.end(), n);
 	if (j == v.end())

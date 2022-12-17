@@ -9,56 +9,61 @@ void	displayInt(int i)
 	std::cout << i << std::endl;
 }
 
-// Testez votre Span avec au moins 10 000 nombres.
 int main()  
 {  
-	Span sp = Span(5);  
-	sp.addNumber(6);  
-	sp.addNumber(3);  
-	sp.addNumber(17);  
-	sp.addNumber(9);  
-	sp.addNumber(11);  
-	std::cout << sp.shortestSpan() << std::endl;  
-	std::cout << sp.longestSpan() << std::endl << std::endl;  
+	Span sp_a = Span(5);  
 
-	std::vector<int>			vect = sp.getVect();
+	std::cout << "\n\033[0;31m" << "Small test" << "\n\033[0;0m\n";
+
+	sp_a.addNumber(6);  
+	sp_a.addNumber(10);  
+	sp_a.addNumber(17);  
+	sp_a.addNumber(4);  
+	sp_a.addNumber(11);  
+	std::cout << sp_a.shortestSpan() << std::endl;  
+	std::cout << sp_a.longestSpan() << std::endl << std::endl;  
+
+	std::vector<int>			vect = sp_a.getVect();
 	for_each(vect.begin(), vect.end(), displayInt);
 
 
-	std::cout << "----------- Big test -------------" << std::endl;
-	{
-		const unsigned int size = 20000;
-		const unsigned int n_max = 2e9;
-		Span sp = Span(size);
-		std::vector<int> vec;
+	const unsigned int	size = 30000;
+	const unsigned int	rdm = 2e8;
+	std::vector<int> 	vec;
+	
+	Span sp_b = Span(size);
 
-		for (size_t i = 0; i < size + 1; i++)
-		{
-			vec.push_back(rand() % n_max);
-		}
-		// Trying to add too much elements
-		try
-		{
-			sp.addFromContainer(vec.begin(), vec.end());
-			std::cout << sp.shortestSpan() << std::endl; std::cout << sp.longestSpan() << std::endl;
-		}
-		catch (const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-		try
-		{
-			sp.addFromContainer(vec.begin(), vec.end() - 1);
-			std::cout << sp.shortestSpan() << std::endl; std::cout << sp.longestSpan() << std::endl;
-		}
-		catch (const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+	for (size_t i = 0; i < size + 1; i++)//remplisage vecteur
+	{
+		vec.push_back(rand() % rdm);
 	}
+
+	std::cout << "\n\033[0;31m" << "Add to many numbers" << "\n\033[0;0m\n";
+	try
+	{
+		sp_b.addFromContainer(vec.begin(), vec.end());
+		std::cout << sp_b.shortestSpan() << std::endl;
+		std::cout << sp_b.longestSpan() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
+	
+	// Testez votre Span avec au moins 10 000 nombres.
+	std::cout << "\n\033[0;31m" << "Big test" << "\n\033[0;0m\n";
+	try
+	{
+		// sp_b.addNumber(6);  
+		sp_b.addFromContainer(vec.begin(), vec.end() - 1);
+		std::cout << sp_b.shortestSpan() << std::endl; 
+		std::cout << sp_b.longestSpan() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
 	return 0;  
 }  
-// 	std::vector<int>			vect;
-// 	std::vector<int>::iterator	it;
-// / 	for (int i = 1; i < 59; i += 2)
-//  		vect.push_back(i);

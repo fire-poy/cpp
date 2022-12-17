@@ -8,7 +8,6 @@ class Span
 {
 	private:
 		size_t				_size;
-
 		std::vector<int>	_v;
 		Span();
 
@@ -28,13 +27,13 @@ class Span
 		std::vector<int> &	getVect();  
 };
 
-template <class T>
-void	Span::addFromContainer(const T &begin, const T &end)
-{
-	if (static_cast<unsigned int>(std::distance(begin, end)) > (_size - _v.size()))
-		throw(std::logic_error("Max size reached"));
-	std::copy(begin, end, std::back_inserter(_v));
-}
+	template <class T>
+	void	Span::addFromContainer(const T &begin, const T &end)
+	{
+		if (static_cast<unsigned int>(std::distance(begin, end)) > (_size - _v.size()))
+			throw(std::logic_error("Max size reached"));
+		std::copy(begin, end, std::back_inserter(_v));
+	}
 
 
 std::ostream	& operator<<(std::ostream & o, Span const & inst);
