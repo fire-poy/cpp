@@ -48,12 +48,15 @@ int		Span::shortestSpan() const
 	std::vector<int>::iterator	it;
 
 	if (_v.size() <= 1)
-		throw std::logic_error("Inssuficient elemnts in Span");
-	delta = _v[1] - _v[0];
-	for(std::vector<int>::const_iterator it(_v.begin() + 1); it != _v.end(); it++)
+		throw std::logic_error("Inssuficient elements in Span");
+	
+	std::vector<int>			copy = _v;
+	sort(copy.begin(), copy.end());
+	delta = copy[1] - copy[0];
+	for(std::vector<int>::const_iterator it(copy.begin() + 1); it != copy.end(); it++)
 	{
 		tmp = *it - *(it - 1);
-		if (std::abs(tmp) < std::abs(delta))
+		if (tmp < delta)
 			delta = tmp;
 	}
 	return delta;
